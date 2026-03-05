@@ -517,23 +517,32 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 992px) {
       .nav-links { display: none; }
+      .pillar-row, .contributor-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pillar-row.reverse { cursor: default; } /* No need for reverse on mobile */
+      .pillar-img-wrap { height: 300px; }
     }
     @media (max-width: 768px) {
-      .about-grid, .community-grid { grid-template-columns: 1fr; }
-      .about-img-wrap img, .community-img img { height: 300px; }
-      .impact-badge { right: 0; bottom: -1.5rem; }
+      .stats-ribbon { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; height: auto; padding: 2rem 5%; }
+      .stat-item { padding: 0; border: none; }
+      .hero h1 { font-size: 2.5rem; }
+      .section-title { font-size: 2rem; }
+      .reg-form-wrap { padding: 2rem 1.5rem; }
     }
     @media (max-width: 480px) {
       nav { padding: .75rem 4%; gap: .5rem; }
       .nav-logo { font-size: 1.2rem; }
       .nav-cta { padding: .45rem .9rem; font-size: .8rem; }
-      .hero-btns { flex-direction: column; align-items: center; }
-      section { padding: 4rem 5%; }
-      .custom-donate { flex-direction: column; }
-      .custom-input-group { flex-direction: column; flex: 1 1 auto; width: 100%; }
+      .hero-badge { font-size: .65rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero-btns { flex-direction: column; width: 100%; gap: 1rem; }
+      .hero-btns button { width: 100%; justify-content: center; }
+      .stats-ribbon { grid-template-columns: 1fr; }
+      .pillar-content h3 { font-size: 1.5rem; }
+      .custom-donate { padding: 1.5rem; }
+      .custom-input-group { flex-direction: column; width: 100%; }
       .custom-input-group input, .custom-input-group button { width: 100%; }
-      .payment-tabs { gap: .4rem; }
-      .pay-tab { min-width: 90px; font-size: .78rem; }
+      .modal { width: 95%; padding: 1.5rem; }
+      .payment-tabs { display: grid; grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
