@@ -62,6 +62,7 @@
       color: var(--white); border: none;
       padding: .6rem 1.4rem; border-radius: 50px; cursor: pointer;
       font-weight: 600; font-size: .9rem;
+      white-space: nowrap; flex-shrink: 0;
       transition: background .3s, transform .2s;
     }
     .nav-cta:hover { background: var(--green-400); transform: translateY(-1px); }
@@ -274,9 +275,9 @@
     }
     .custom-donate h3 { font-size: 1.1rem; font-weight: 700; flex: 1 1 200px; }
     .custom-donate p { font-size: .875rem; color: rgba(255,255,255,.6); flex: 1 1 300px; }
-    .custom-input-group { display: flex; gap: .5rem; flex: 1 1 300px; }
+    .custom-input-group { display: flex; gap: .5rem; flex: 1 1 300px; min-width: 0; }
     .custom-input-group input {
-      flex: 1; background: rgba(255,255,255,.06); border: 1px solid rgba(16,185,129,.3);
+      flex: 1; min-width: 0; background: rgba(255,255,255,.06); border: 1px solid rgba(16,185,129,.3);
       color: #fff; padding: .75rem 1rem; border-radius: 10px; font-size: 1rem;
       outline: none; transition: border .3s;
     }
@@ -285,6 +286,7 @@
     .custom-input-group button {
       background: var(--green-600); color: #fff; border: none;
       padding: .75rem 1.5rem; border-radius: 10px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
       transition: background .3s, transform .2s;
     }
     .custom-input-group button:hover { background: var(--green-500); transform: translateY(-2px); }
@@ -484,9 +486,14 @@
       .impact-badge { right: 0; bottom: -1.5rem; }
     }
     @media (max-width: 480px) {
-      nav { padding: 1rem 4%; }
+      nav { padding: .75rem 4%; gap: .5rem; }
+      .nav-logo { font-size: 1.2rem; }
+      .nav-cta { padding: .45rem .9rem; font-size: .8rem; }
       .hero-btns { flex-direction: column; align-items: center; }
       section { padding: 4rem 5%; }
+      .custom-donate { flex-direction: column; }
+      .custom-input-group { flex-direction: column; flex: 1 1 auto; width: 100%; }
+      .custom-input-group input, .custom-input-group button { width: 100%; }
       .payment-tabs { gap: .4rem; }
       .pay-tab { min-width: 90px; font-size: .78rem; }
     }
