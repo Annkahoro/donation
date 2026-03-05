@@ -55,6 +55,7 @@
       font-size: 1.5rem; font-weight: 800;
       color: var(--green-400);
       letter-spacing: -.5px;
+      text-decoration: none;
     }
     .nav-logo span { color: var(--gold-light); }
     .nav-cta {
@@ -335,20 +336,46 @@
     .testi-name { font-weight: 600; font-size: .9rem; }
     .testi-location { font-size: .75rem; color: rgba(255,255,255,.45); }
 
-    /* ─── CTA BANNER ─── */
-    .cta-banner {
-      background: linear-gradient(135deg, var(--green-800), var(--green-900));
-      text-align: center; padding: 6rem 5%;
-      border-top: 4px solid var(--green-500);
-      border-bottom: 4px solid var(--green-500);
+    /* ─── PILLARS SECTION ─── */
+    .pillars-intro { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+    .pillar-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; margin-bottom: 6rem;
     }
-    .cta-banner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; margin-bottom: 1rem;
-    }
-    .cta-banner p { font-size: 1.1rem; color: rgba(255,255,255,.75); margin-bottom: 2rem; }
+    .pillar-row.reverse { direction: rtl; }
+    .pillar-row.reverse > * { direction: ltr; }
+    .pillar-img-wrap { position: relative; border-radius: var(--radius); overflow: hidden; height: 400px; box-shadow: var(--shadow); }
+    .pillar-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .pillar-row:hover .pillar-img-wrap img { transform: scale(1.05); }
+    .pillar-content h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+    .pillar-content p { color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 1.5rem; }
+    .pillar-tags { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .pillar-tag { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.3); padding: .4rem .8rem; border-radius: 50px; font-size: .8rem; font-weight: 500; }
 
-    /* ─── FOOTER ─── */
+    /* ─── CONTRIBUTOR FORM ─── */
+    .contributor-section { background: #0a1a0d; padding: 6rem 5%; }
+    .contributor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .reg-form-wrap {
+      background: #111a13; border: 1px solid rgba(16,185,129,.2);
+      padding: 3rem; border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .reg-form h2 { margin-bottom: .5rem; font-family: 'Playfair Display', serif; }
+    .reg-form p { color: rgba(255,255,255,.5); font-size: .9rem; margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: .8rem; color: rgba(255,255,255,.6); margin-bottom: .5rem; }
+    .form-group input, .form-group select {
+      width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(16,185,129,.3);
+      padding: .8rem 1rem; border-radius: 10px; color: #fff; outline: none; transition: border .3s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--green-400); }
+    .submit-btn {
+      width: 100%; background: var(--green-500); color: #fff; border: none;
+      padding: 1rem; border-radius: 12px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all .3s; margin-top: 1rem;
+    }
+    .submit-btn:hover { background: var(--green-400); transform: translateY(-2px); }
+
+    /* ─── ANIMATIONS ─── */
     footer {
       background: #080f0a; padding: 3rem 5%;
       display: flex; flex-wrap: wrap; justify-content: space-between;
@@ -505,8 +532,8 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">BC<span>4</span>P</div>
-    <button class="nav-cta" onclick="openModal('featured', 2500)">🌿 Donate Now</button>
+    <a href="#home" class="nav-logo">BC<span>4</span>P</a>
+    <button class="nav-cta" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">🌿 Start Documenting</button>
   </nav>
 
   <!-- HERO -->
@@ -514,15 +541,15 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-badge">🌍 Posterity Cell One Initiative</span>
-      <h1>Plant a Seed for <em>Generations</em> to Come</h1>
-      <p>Help us build a 12,000+ acre sovereign agricultural corridor rooted in Gīkūyū heritage and powered by modern technology. Your donation is land for the future.</p>
+      <span class="hero-badge">🌿 Core Community Project 01</span>
+      <h1>Preserving the <em>Gīkūyū</em> Heritage for Posterity</h1>
+      <p>A digital platform to document, preserve and govern Political, Economic, Social, Technological, Environmental and Legal knowledge across the Gīkūyū cultural corridor.</p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="openModal('featured', 2500)">
-          <span>💚</span> Donate Today
+        <button class="btn-primary" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+          Start Documenting
         </button>
-        <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-          Learn the Vision
+        <button class="btn-outline" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">
+          Explore And Pillars
         </button>
       </div>
     </div>
@@ -534,136 +561,196 @@
 
   <!-- STATS RIBBON -->
   <div class="stats-ribbon">
-    <div class="stat-item"><h3>12,000+</h3><p>Acres Targeted</p></div>
-    <div class="stat-item"><h3>5</h3><p>Pillar Framework</p></div>
-    <div class="stat-item"><h3>KES 38M</h3><p>Raised So Far</p></div>
-    <div class="stat-item"><h3>200+</h3><p>Active Contributors</p></div>
-    <div class="stat-item"><h3>100%</h3><p>Community Owned</p></div>
+    <div class="stat-item"><h3>70,000</h3><p>Acres in Land</p></div>
+    <div class="stat-item"><h3>6</h3><p>Knowledge Pillars</p></div>
+    <div class="stat-item"><h3>32</h3><p>Years Fixed Funding</p></div>
+    <div class="stat-item"><h3>∞</h3><p>Endless Legacy</p></div>
   </div>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="fade-up">
-      <p class="section-label">About the Project</p>
-      <h2 class="section-title">A Corridor Built on <em>Purpose</em></h2>
-      <p class="section-sub">BC4P is not just a farm — it is a living statement of sovereignty, heritage, and collective prosperity. Every acre reclaimed is a chapter written for our children.</p>
+  <!-- PILLARS -->
+  <section id="pillars">
+    <div class="pillars-intro fade-up">
+      <p class="section-label">What we are building</p>
+      <h2 class="section-title">The 6 Pillars of Knowledge</h2>
+      <p class="section-sub">Every contribution you make is categorized under one of our core pillars, ensuring structural relevance and impact.</p>
     </div>
-    <div class="about-grid">
-      <div class="about-img-wrap fade-up">
-        <img src="images/farmer_portrait.png" alt="Gikuyu farmer standing in a green maize field" />
-        <div class="impact-badge"><span>12K+</span>Acres of Sovereign Land</div>
+
+    <!-- 1. Political -->
+    <div class="pillar-row fade-up">
+      <div class="pillar-img-wrap">
+        <img src="images/pillar_political.png" alt="Political Governance" />
       </div>
-      <div class="fade-up">
-        <p class="section-label">Our Five Pillars</p>
-        <h2 class="section-title" style="font-size:2rem">What Your Money <em>Builds</em></h2>
-        <p style="color:rgba(255,255,255,.6);line-height:1.7;font-size:.95rem;margin-bottom:1rem;">We collect and act on data across five thematic pillars, ensuring every shilling is channeled into a proven, community-led framework.</p>
-        <div class="pillars">
-          <div class="pillar"><div class="pillar-icon">🏛️</div> Cultural Preservation — Gīkūyū traditions & oral heritage</div>
-          <div class="pillar"><div class="pillar-icon">🤝</div> Social — Community governance & inclusion</div>
-          <div class="pillar"><div class="pillar-icon">💰</div> Economic — Market access, revenue models & financial equity</div>
-          <div class="pillar"><div class="pillar-icon">🌿</div> Environmental — Sustainable farming & ecological restoration</div>
-          <div class="pillar"><div class="pillar-icon">⚙️</div> Technical — Digital systems, infrastructure & data analytics</div>
+      <div class="pillar-content">
+        <p class="section-label">Governance • Political</p>
+        <h3>Political Governance</h3>
+        <p>Documenting the architecture of Power, Methods of Action, and Conflict Control in Gīkūyū tradition. These systems ensure our collective interests and power remain sustainable and effective.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Governance & Leadership Models</span>
+          <span class="pillar-tag">Advocacy & Representation</span>
+          <span class="pillar-tag">Community Policy Frameworks</span>
+          <span class="pillar-tag">Policy Strategy & Compliance</span>
+          <span class="pillar-tag">Institutional Accountability</span>
+          <span class="pillar-tag">Ensuring Full Reliance on Wisdom</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Economic -->
+    <div class="pillar-row reverse fade-up">
+      <div class="pillar-img-wrap">
+        <img src="images/pillar_economic.png" alt="Economic Prosperity" />
+      </div>
+      <div class="pillar-content">
+        <p class="section-label">Prosperity • Economic</p>
+        <h3>Economic Prosperity</h3>
+        <p>Expand the indigenous commercial performance — Trade, Craft, Network, Connections, Business systems, Markets, and our Industries — establishing transparent, identity-driven and reliable economic/financial futures.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Trade & Commercial Linkages</span>
+          <span class="pillar-tag">Agro-product Banking System</span>
+          <span class="pillar-tag">Market Access & Expansion</span>
+          <span class="pillar-tag">Local Economy Growth</span>
+          <span class="pillar-tag">Strategic Revenue Streams</span>
+          <span class="pillar-tag">Sovereign Financial Independence</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Social & Cultural -->
+    <div class="pillar-row fade-up">
+      <div class="pillar-img-wrap">
+        <img src="images/pillar_social.png" alt="Social & Cultural Heritage" />
+      </div>
+      <div class="pillar-content">
+        <p class="section-label">Heritage • Social & Cultural</p>
+        <h3>Social & Cultural Heritage</h3>
+        <p>Aligning community cohesion and cultural identity with modern systems. Our traditions and oral wisdom are preserved, digitized, and applied to solve the dynamic challenges of our community and communal wellness.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Gīkūyū Traditions & Customs</span>
+          <span class="pillar-tag">Language Preservation</span>
+          <span class="pillar-tag">Indigenous Wisdom Systems</span>
+          <span class="pillar-tag">Social Equity Frameworks</span>
+          <span class="pillar-tag">Cultural Heritage Sites</span>
+          <span class="pillar-tag">Pathway to Future Generations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Technological -->
+    <div class="pillar-row reverse fade-up">
+      <div class="pillar-img-wrap">
+        <div style="width:100%;height:100%;background:#1a2e1d;display:flex;align-items:center;justify-content:center;color:var(--green-400);font-size:3rem">⚙️</div>
+      </div>
+      <div class="pillar-content">
+        <p class="section-label">Innovation • Technological</p>
+        <h3>Technological Innovation</h3>
+        <p>Modernizing traditional methods through intentional technical innovation. From satellite farming to data platforms, we leverage technology to protect and scale our heritage.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Digital Knowledge Platforms</span>
+          <span class="pillar-tag">Precision Agriculture</span>
+          <span class="pillar-tag">Blockchain Land Tracking</span>
+          <span class="pillar-tag">Data-Driven Governance</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Environmental -->
+    <div class="pillar-row fade-up">
+      <div class="pillar-img-wrap">
+        <div style="width:100%;height:100%;background:#1a2e1d;display:flex;align-items:center;justify-content:center;color:var(--green-400);font-size:3rem">🌿</div>
+      </div>
+      <div class="pillar-content">
+        <p class="section-label">Sustainability • Environmental</p>
+        <h3>Environmental Stewardship</h3>
+        <p>Restoring ecosystem balance and ensuring sustainable land use across our corridor. We are the guardians of the land, for the land.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Regenerative Farming</span>
+          <span class="pillar-tag">Water Resource Mgmt</span>
+          <span class="pillar-tag">Biodiversity Conservation</span>
+          <span class="pillar-tag">Climate Resilience</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Legal -->
+    <div class="pillar-row reverse fade-up">
+      <div class="pillar-img-wrap">
+        <div style="width:100%;height:100%;background:#1a2e1d;display:flex;align-items:center;justify-content:center;color:var(--green-400);font-size:3rem">⚖️</div>
+      </div>
+      <div class="pillar-content">
+        <p class="section-label">Compliance • Legal</p>
+        <h3>Legal Governance</h3>
+        <p>Protecting collective land rights and intellectual property through robust legal frameworks. We ensure our heritage and resources are protected legally.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Collective Land Rights</span>
+          <span class="pillar-tag">IP Protection</span>
+          <span class="pillar-tag">Governance Drafting</span>
+          <span class="pillar-tag">Ethics & Accountability</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROGRESS -->
-  <div class="progress-section fade-up">
-    <div style="text-align:center">
-      <p class="section-label">Fundraising Progress</p>
-      <h2 class="section-title">Every Shilling <em>Counts</em></h2>
-    </div>
-    <div class="progress-wrap">
-      <div class="progress-header">
-        <span>KES 38,000,000 raised</span>
-        <span>Goal: KES 100,000,000</span>
-      </div>
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill"></div>
-      </div>
-      <div class="progress-meta">
-        <div class="meta-item"><div class="meta-val">38%</div><div class="meta-lbl">Goal Reached</div></div>
-        <div class="meta-item"><div class="meta-val">214</div><div class="meta-lbl">Donors</div></div>
-        <div class="meta-item"><div class="meta-val">62 Days</div><div class="meta-lbl">Campaign Active</div></div>
-        <div class="meta-item"><div class="meta-val">KES 62M</div><div class="meta-lbl">Still Needed</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DONATION TIERS -->
-  <section class="donate-section" id="donate">
-    <div class="fade-up" style="text-align:center;max-width:600px;margin:0 auto">
-      <p class="section-label">Donation Tiers</p>
-      <h2 class="section-title">Choose Your <em>Contribution</em></h2>
-      <p class="section-sub">Every tier directly funds a specific component of the corridor. Choose what resonates with you.</p>
-    </div>
-    <div class="tiers-grid fade-up">
-
-      <div class="tier-card" onclick="openModal('seed', 500)">
-        <div class="tier-amount">500 <span class="tier-currency">KES</span></div>
-        <div class="tier-name">🌱 Seed Donor</div>
-        <div class="tier-desc">Plant the first seed. Your contribution goes directly to soil preparation and data collection tools.</div>
-        <ul class="tier-perks">
-          <li>Digital certificate of contribution</li>
-          <li>Project update newsletters</li>
-          <li>Name on donor wall</li>
-        </ul>
-        <button class="btn-donate">Donate KES 500</button>
-      </div>
-
-      <div class="tier-card featured" onclick="openModal('grove', 2500)">
-        <div class="tier-badge">Most Popular</div>
-        <div class="tier-amount">2,500 <span class="tier-currency">KES</span></div>
-        <div class="tier-name">🌳 Grove Guardian</div>
-        <div class="tier-desc">Fund a full acre's worth of groundwork. Your grove will be named in the community records.</div>
-        <ul class="tier-perks">
-          <li>All Seed Donor benefits</li>
-          <li>Named acre in community records</li>
-          <li>Invitation to quarterly virtual meeting</li>
-          <li>Project progress report PDF</li>
-        </ul>
-        <button class="btn-donate" style="background:linear-gradient(135deg,#10b981,#059669)">Donate KES 2,500</button>
-      </div>
-
-      <div class="tier-card" onclick="openModal('corridor', 10000)">
-        <div class="tier-amount">10,000 <span class="tier-currency">KES</span></div>
-        <div class="tier-name">🏞️ Corridor Champion</div>
-        <div class="tier-desc">Sponsor infrastructure — irrigation, fencing or technology for one zone of the corridor.</div>
-        <ul class="tier-perks">
-          <li>All Grove Guardian benefits</li>
-          <li>Named zone sponsorship</li>
-          <li>Physical plaque at the corridor</li>
-          <li>Annual impact report</li>
-        </ul>
-        <button class="btn-donate">Donate KES 10,000</button>
-      </div>
-
-      <div class="tier-card" onclick="openModal('sovereign', 50000)">
-        <div class="tier-amount">50,000 <span class="tier-currency">KES</span></div>
-        <div class="tier-name">🦅 Sovereign Patron</div>
-        <div class="tier-desc">Become a foundational pillar. Patrons are enshrined in the Heritage Wall and invited to the inaugural ceremony.</div>
-        <ul class="tier-perks">
-          <li>All Corridor Champion benefits</li>
-          <li>Seat on the Advisory Panel</li>
-          <li>Heritage Wall inscription</li>
-          <li>VIP inaugural ceremony invite</li>
-          <li>Exclusive patron land certificate</li>
-        </ul>
-        <button class="btn-donate">Donate KES 50,000</button>
-      </div>
-
-    </div>
-
-    <!-- Custom Amount -->
-    <div class="custom-donate fade-up">
+  <!-- BECOME A CONTRIBUTOR -->
+  <section class="contributor-section fade-up" id="register">
+    <div class="contributor-grid">
       <div>
-        <h3>💡 Set Your Own Amount</h3>
-        <p>No amount is too small. Every contribution, big or small, lays another brick in the corridor.</p>
+        <p class="section-label">Join the movement</p>
+        <h2 class="section-title">Become a Contributor</h2>
+        <p style="color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:2rem;">Registration is free. Your contributions are helping to rebuild the BC4P state-corridor and help prepare for the governance of ancestral land for future generations.</p>
+        <ul class="tier-perks" style="margin-bottom:2rem">
+          <li>Access to exclusive project updates</li>
+          <li>Participate in community forums</li>
+          <li>Connect with a network of visionaries</li>
+        </ul>
+        <a href="#" style="color:var(--green-400);font-weight:700;text-decoration:none">View Contributor FAQs →</a>
       </div>
-      <div class="custom-input-group">
-        <input id="customAmount" type="number" min="50" placeholder="Enter amount (KES)" />
-        <button onclick="openCustomModal()">Donate</button>
+      <div class="reg-form-wrap">
+        <form class="reg-form" onsubmit="event.preventDefault(); alert('Registration successful!');">
+          <h2>Create Your Account</h2>
+          <p>Contributor Registration</p>
+          <div class="form-group">
+            <label>FULL NAME</label>
+            <input type="text" placeholder="e.g. Martha Karanja" required />
+          </div>
+          <div class="form-group">
+            <label>PHONE NUMBER</label>
+            <input type="tel" placeholder="e.g. +254 712 345 678" required />
+          </div>
+          <div class="form-group">
+            <label>WHY DO YOU WANT TO JOIN...</label>
+            <select required>
+              <option value="">Select a reason</option>
+              <option value="heritage">Heritage Preservation</option>
+              <option value="farming">Sustainable Farming</option>
+              <option value="tech">Technical Innovation</option>
+              <option value="governance">Legal & Governance</option>
+            </select>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div class="form-group">
+              <label>COUNTRY</label>
+              <input type="text" value="Kenya" />
+            </div>
+            <div class="form-group">
+              <label>REGION</label>
+              <select>
+                <option>Central Region, Kenya</option>
+                <option>Nairobi</option>
+                <option>Diaspora</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>CATEGORY LEVEL</label>
+            <select>
+              <option>Silver: Seed Donor</option>
+              <option>Gold: Grove Guardian</option>
+              <option>Platinum: Corridor Champion</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn" style="background:#10b981">Join the Corridor →</button>
+          <p style="text-align:center;font-size:.7rem;margin-top:1rem">Privacy Policy • Terms & Agreements</p>
+        </form>
       </div>
     </div>
   </section>
