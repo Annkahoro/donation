@@ -533,7 +533,7 @@
   <!-- NAV -->
   <nav>
     <a href="#home" class="nav-logo">BC<span>4</span>P</a>
-    <button class="nav-cta" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">🌿 Start Documenting</button>
+    <button class="nav-cta" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">🌿 Donate Now</button>
   </nav>
 
   <!-- HERO -->
@@ -545,11 +545,11 @@
       <h1>Preserving the <em>Gīkūyū</em> Heritage for Posterity</h1>
       <p>A digital platform to document, preserve and govern Political, Economic, Social, Technological, Environmental and Legal knowledge across the Gīkūyū cultural corridor.</p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
-          Start Documenting
+        <button class="btn-primary" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">
+          Donate to the Cause
         </button>
         <button class="btn-outline" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">
-          Explore And Pillars
+          Explore Knowledge Pillars
         </button>
       </div>
     </div>
@@ -565,6 +565,29 @@
     <div class="stat-item"><h3>6</h3><p>Knowledge Pillars</p></div>
     <div class="stat-item"><h3>32</h3><p>Years Fixed Funding</p></div>
     <div class="stat-item"><h3>∞</h3><p>Endless Legacy</p></div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-section fade-up">
+    <div style="text-align:center">
+      <p class="section-label">Fundraising Progress</p>
+      <h2 class="section-title">Every Shilling <em>Counts</em></h2>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span>KES 38,000,000 raised</span>
+        <span>Goal: KES 100,000,000</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <div class="progress-meta">
+        <div class="meta-item"><div class="meta-val">38%</div><div class="meta-lbl">Goal Reached</div></div>
+        <div class="meta-item"><div class="meta-val">214</div><div class="meta-lbl">Donors</div></div>
+        <div class="meta-item"><div class="meta-val">62 Days</div><div class="meta-lbl">Campaign Active</div></div>
+        <div class="meta-item"><div class="meta-val">KES 62M</div><div class="meta-lbl">Still Needed</div></div>
+      </div>
+    </div>
   </div>
 
   <!-- PILLARS -->
@@ -592,6 +615,7 @@
           <span class="pillar-tag">Institutional Accountability</span>
           <span class="pillar-tag">Ensuring Full Reliance on Wisdom</span>
         </div>
+        <button class="btn-donate" style="margin-top:2rem; width:fit-content; padding: .6rem 1.5rem;" onclick="openModal('seed')">Invest in this Pillar →</button>
       </div>
     </div>
 
@@ -612,6 +636,7 @@
           <span class="pillar-tag">Strategic Revenue Streams</span>
           <span class="pillar-tag">Sovereign Financial Independence</span>
         </div>
+        <button class="btn-donate" style="margin-top:2rem; width:fit-content; padding: .6rem 1.5rem;" onclick="openModal('seed')">Invest in this Pillar →</button>
       </div>
     </div>
 
@@ -632,6 +657,7 @@
           <span class="pillar-tag">Cultural Heritage Sites</span>
           <span class="pillar-tag">Pathway to Future Generations</span>
         </div>
+        <button class="btn-donate" style="margin-top:2rem; width:fit-content; padding: .6rem 1.5rem;" onclick="openModal('seed')">Invest in this Pillar →</button>
       </div>
     </div>
 
@@ -650,6 +676,7 @@
           <span class="pillar-tag">Blockchain Land Tracking</span>
           <span class="pillar-tag">Data-Driven Governance</span>
         </div>
+        <button class="btn-donate" style="margin-top:2rem; width:fit-content; padding: .6rem 1.5rem;" onclick="openModal('seed')">Invest in this Pillar →</button>
       </div>
     </div>
 
@@ -668,6 +695,7 @@
           <span class="pillar-tag">Biodiversity Conservation</span>
           <span class="pillar-tag">Climate Resilience</span>
         </div>
+        <button class="btn-donate" style="margin-top:2rem; width:fit-content; padding: .6rem 1.5rem;" onclick="openModal('seed')">Invest in this Pillar →</button>
       </div>
     </div>
 
@@ -686,6 +714,81 @@
           <span class="pillar-tag">Governance Drafting</span>
           <span class="pillar-tag">Ethics & Accountability</span>
         </div>
+        <button class="btn-donate" style="margin-top:2rem; width:fit-content; padding: .6rem 1.5rem;" onclick="openModal('seed')">Invest in this Pillar →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATION TIERS -->
+  <section class="donate-section" id="donate">
+    <div class="fade-up" style="text-align:center;max-width:600px;margin:0 auto">
+      <p class="section-label">Support Our Mission</p>
+      <h2 class="section-title">Investment <em>Tiers</em></h2>
+      <p class="section-sub">Choose a tier to directly fund the preservation of Gīkūyū heritage across our 6 pillars.</p>
+    </div>
+    <div class="tiers-grid fade-up">
+
+      <div class="tier-card" onclick="openModal('seed', 500)">
+        <div class="tier-amount">500 <span class="tier-currency">KES</span></div>
+        <div class="tier-name">🌱 Seed Donor</div>
+        <div class="tier-desc">Plant the first seed. Your contribution goes directly to documentation tools and heritage site mapping.</div>
+        <ul class="tier-perks">
+          <li>Digital certificate</li>
+          <li>Heritage update newsletter</li>
+          <li>Virtual donor roll</li>
+        </ul>
+        <button class="btn-donate">Donate KES 500</button>
+      </div>
+
+      <div class="tier-card featured" onclick="openModal('grove', 2500)">
+        <div class="tier-badge">Recommended</div>
+        <div class="tier-amount">2,500 <span class="tier-currency">KES</span></div>
+        <div class="tier-name">🌳 Grove Guardian</div>
+        <div class="tier-desc">Sponsor a foundational unit of land and its documented history. A major step for heritage preservation.</div>
+        <ul class="tier-perks">
+          <li>All Seed perks</li>
+          <li>Personalized impact report</li>
+          <li>Invitation to community forum</li>
+        </ul>
+        <button class="btn-donate" style="background:linear-gradient(135deg,#10b981,#059669)">Donate KES 2,500</button>
+      </div>
+
+      <div class="tier-card" onclick="openModal('corridor', 10000)">
+        <div class="tier-amount">10,000 <span class="tier-currency">KES</span></div>
+        <div class="tier-name">🏞️ Corridor Champion</div>
+        <div class="tier-desc">Fund the legal and technical frameworks for an entire cultural zone in the corridor.</div>
+        <ul class="tier-perks">
+          <li>All Grove perks</li>
+          <li>Named zone sponsorship</li>
+          <li>Exclusive video briefing</li>
+        </ul>
+        <button class="btn-donate">Donate KES 10,000</button>
+      </div>
+
+      <div class="tier-card" onclick="openModal('sovereign', 50000)">
+        <div class="tier-amount">50,000 <span class="tier-currency">KES</span></div>
+        <div class="tier-name">🦅 Sovereign Patron</div>
+        <div class="tier-desc">Enter the highest circle of contributors, ensuring the long-term governance of our ancestral land.</div>
+        <ul class="tier-perks">
+          <li>All Corridor perks</li>
+          <li>Seat on Advisory Panel</li>
+          <li>Heritage Wall inscription</li>
+          <li>VIP Ceremoney invite</li>
+        </ul>
+        <button class="btn-donate">Donate KES 50,000</button>
+      </div>
+
+    </div>
+
+    <!-- Custom Amount -->
+    <div class="custom-donate fade-up">
+      <div>
+        <h3>💡 Custom Contribution</h3>
+        <p>Your support in any amount ensures our heritage remains sovereign and secure.</p>
+      </div>
+      <div class="custom-input-group">
+        <input id="customAmount" type="number" min="50" placeholder="Enter amount (KES)" />
+        <button onclick="openCustomModal()">Donate</button>
       </div>
     </div>
   </section>
