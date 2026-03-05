@@ -517,9 +517,10 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 992px) {
       .nav-links { display: none; }
-      .pillar-row, .contributor-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pillar-row, .contributor-grid, .community-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .pillar-row.reverse { cursor: default; } /* No need for reverse on mobile */
       .pillar-img-wrap { height: 300px; }
+      .community-img img { height: 350px; }
     }
     @media (max-width: 768px) {
       .stats-ribbon { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; height: auto; padding: 2rem 5%; }
@@ -527,6 +528,8 @@
       .hero h1 { font-size: 2.5rem; }
       .section-title { font-size: 2rem; }
       .reg-form-wrap { padding: 2rem 1.5rem; }
+      .community-point { flex-direction: column; gap: 1rem; text-align: center; }
+      .cp-icon { margin: 0 auto; }
     }
     @media (max-width: 480px) {
       nav { padding: .75rem 4%; gap: .5rem; }
@@ -538,6 +541,7 @@
       .hero-btns button { width: 100%; justify-content: center; }
       .stats-ribbon { grid-template-columns: 1fr; }
       .pillar-content h3 { font-size: 1.5rem; }
+      .community-img img { height: 250px; }
       .custom-donate { padding: 1.5rem; }
       .custom-input-group { flex-direction: column; width: 100%; }
       .custom-input-group input, .custom-input-group button { width: 100%; }
