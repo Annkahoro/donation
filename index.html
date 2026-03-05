@@ -499,6 +499,29 @@
     }
     .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; }
 
+    /* ─── FEEDBACK MODAL ─── */
+    .feedback-modal-overlay {
+      position: fixed; inset: 0; z-index: 2100;
+      background: rgba(0,0,0,.8); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .feedback-modal-overlay.open { display: flex; }
+    .feedback-modal {
+      background: #0d2318; border: 1px solid rgba(16,185,129,.4);
+      border-radius: 20px; padding: 3rem 2rem; max-width: 400px; width: 100%;
+      text-align: center; position: relative; animation: modalIn .3s ease;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .feedback-icon { font-size: 4rem; margin-bottom: 1.5rem; display: block; }
+    .feedback-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.75rem; color: #fff; }
+    .feedback-msg { color: rgba(255,255,255,.7); line-height: 1.6; margin-bottom: 2rem; }
+    .feedback-btn {
+      background: var(--green-500); color: #fff; border: none;
+      padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .feedback-btn:hover { background: var(--green-400); transform: translateY(-2px); }
+
     /* ─── PROGRESS BAR ─── */
     .progress-section { background: #0a1a0d; padding: 4rem 5%; }
     .progress-wrap { max-width: 700px; margin: 2rem auto 0; }
@@ -850,7 +873,7 @@
         <a href="#" style="color:var(--green-400);font-weight:700;text-decoration:none">View Contributor FAQs →</a>
       </div>
       <div class="reg-form-wrap">
-        <form class="reg-form" onsubmit="event.preventDefault(); alert('Registration successful!');">
+        <form class="reg-form" onsubmit="event.preventDefault(); showFeedback('Registration Successful', 'Welcome to the movement! Your registration has been received successfully.', 'success');">
           <h2>Create Your Account</h2>
           <p>Contributor Registration</p>
           <div class="form-group">
@@ -1117,6 +1140,16 @@
   <!-- SUCCESS TOAST -->
   <div class="toast" id="successToast">🎉 Thank you! Your contribution is being processed.</div>
 
+  <!-- FEEDBACK MODAL -->
+  <div class="feedback-modal-overlay" id="feedbackModal">
+    <div class="feedback-modal">
+      <span class="feedback-icon" id="feedbackIcon">🌿</span>
+      <h2 class="feedback-title" id="feedbackTitle">Thank You</h2>
+      <p class="feedback-msg" id="feedbackMsg">Your message here.</p>
+      <button class="feedback-btn" onclick="closeFeedback()">Continue</button>
+    </div>
+  </div>
+
   <script>
     // ── Fade-up observer ──
     const observer = new IntersectionObserver(entries => {
@@ -1161,9 +1194,39 @@
       document.body.style.overflow = 'hidden';
     }
 
+    function confirmDonation() {
+      closeModal();
+      showFeedback('Donation Recorded', 'Thank you for your generous contribution. A transaction receipt will be sent to your email once processing is complete.', 'success');
+    }
+
+    // ── Feedback Modal ──
+    function showFeedback(title, msg, type = 'success') {
+      const modal = document.getElementById('feedbackModal');
+      const icon = document.getElementById('feedbackIcon');
+      document.getElementById('feedbackTitle').textContent = title;
+      document.getElementById('feedbackMsg').textContent = msg;
+      
+      if (type === 'error') icon.textContent = '⚠️';
+      else icon.textContent = '🌿';
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFeedback() {
+      document.getElementById('feedbackModal').classList.remove('open');
+      document.body.style.overflow = '';
+      // Also clear registration form if open
+      const regForm = document.querySelector('.reg-form');
+      if (regForm) regForm.reset();
+    }
+
     function openCustomModal() {
       const val = parseInt(document.getElementById('customAmount').value);
-      if (!val || val < 50) { alert('Please enter a valid amount (minimum KES 50)'); return; }
+      if (!val || val < 50) { 
+        showFeedback('Invalid Amount', 'Please enter a valid amount (minimum KES 50)', 'error');
+        return; 
+      }
       tiers.custom.amount = val;
       openModal('custom', val);
     }
@@ -1175,13 +1238,6 @@
 
     function handleOverlayClick(e) {
       if (e.target === document.getElementById('donationModal')) closeModal();
-    }
-
-    function confirmDonation() {
-      closeModal();
-      const toast = document.getElementById('successToast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4500);
     }
 
     function copyText(text) {
@@ -1197,7 +1253,12 @@
     }
 
     // ─ Keyboard close
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', e => { 
+      if (e.key === 'Escape') {
+        closeModal();
+        closeFeedback();
+      }
+    });
   </script>
 </body>
 </html>
