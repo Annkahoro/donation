@@ -166,7 +166,7 @@
     .stat-item p { font-size: .85rem; color: rgba(255,255,255,.7); margin-top: .25rem; }
 
     /* ─── SECTION WRAPPER ─── */
-    section { padding: 6rem 5%; }
+    section { padding: 4rem 5%; }
     .section-label {
       text-transform: uppercase; letter-spacing: 2px;
       font-size: .75rem; font-weight: 700; color: var(--green-400);
@@ -359,7 +359,7 @@
     .pillar-tag { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.3); padding: .4rem .8rem; border-radius: 50px; font-size: .8rem; font-weight: 500; }
 
     /* ─── CONTRIBUTOR FORM ─── */
-    .contributor-section { background: #0a1a0d; padding: 6rem 5%; }
+    .contributor-section { background: #0a1a0d; padding: 4rem 5%; }
     .contributor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
     .reg-form-wrap {
       background: #111a13; border: 1px solid rgba(16,185,129,.2);
@@ -380,6 +380,14 @@
       cursor: pointer; transition: all .3s; margin-top: 1rem;
     }
     .submit-btn:hover { background: var(--green-400); transform: translateY(-2px); }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--green-800), var(--green-900));
+      text-align: center; padding: 4rem 5%;
+      border-top: 4px solid var(--green-500);
+      border-bottom: 4px solid var(--green-500);
+    }
 
     /* ─── ANIMATIONS ─── */
     footer {
@@ -517,14 +525,18 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 992px) {
       .nav-links { display: none; }
-      .pillar-row, .contributor-grid, .community-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .pillar-row.reverse { cursor: default; } /* No need for reverse on mobile */
-      .pillar-img-wrap { height: 300px; }
+      .pillar-row { display: flex; flex-direction: column-reverse; gap: 2rem; }
+      .contributor-grid, .community-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pillar-row.reverse { direction: ltr; } /* Reset direction for stack */
+      .pillar-row.reverse > * { direction: ltr; }
+      .pillar-img-wrap { height: 300px; width: 100%; }
       .community-img img { height: 350px; }
     }
     @media (max-width: 768px) {
-      .stats-ribbon { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; height: auto; padding: 2rem 5%; }
-      .stat-item { padding: 0; border: none; }
+      .stats-ribbon { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.5rem 5%; }
+      .stat-item h3 { font-size: 1.5rem; }
+      .stat-item p { font-size: .7rem; }
+      .stat-item { padding: 0.5rem; border: none; }
       .hero h1 { font-size: 2.5rem; }
       .section-title { font-size: 2rem; }
       .reg-form-wrap { padding: 2rem 1.5rem; }
@@ -539,7 +551,9 @@
       .hero h1 { font-size: 2rem; }
       .hero-btns { flex-direction: column; width: 100%; gap: 1rem; }
       .hero-btns button { width: 100%; justify-content: center; }
-      .stats-ribbon { grid-template-columns: 1fr; }
+      .stats-ribbon { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; padding: 1rem 2%; }
+      .stat-item h3 { font-size: 1.1rem; }
+      .stat-item p { font-size: .6rem; }
       .pillar-content h3 { font-size: 1.5rem; }
       .community-img img { height: 250px; }
       .custom-donate { padding: 1.5rem; }
@@ -966,7 +980,7 @@
   <div class="cta-banner fade-up">
     <h2>The Land <em>Is Calling.</em><br>Will You Answer?</h2>
     <p>Join over 200 contributors who are already shaping the future of our corridor.</p>
-    <button class="btn-primary" style="display:inline-flex;margin:0 auto" onclick="openModal('featured', 2500)">
+    <button class="btn-primary" style="display:inline-flex; align-items:center; justify-content:center; gap:0.75rem; margin:0 auto;" onclick="openModal('featured', 2500)">
       <span>🌿</span> Make Your Donation
     </button>
   </div>
