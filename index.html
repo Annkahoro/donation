@@ -42,13 +42,11 @@
 
     /* ─── NAV ─── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 5%;
-      background: rgba(6,78,59,.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(52,211,153,.2);
-      transition: all .3s;
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 1rem 5%; display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,15,10,.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(16,185,129,.15);
+      transition: background .3s, padding .3s;
     }
     .nav-logo {
       font-family: 'Playfair Display', serif;
@@ -58,6 +56,14 @@
       text-decoration: none;
     }
     .nav-logo span { color: var(--gold-light); }
+    .nav-links {
+      display: flex; gap: 2rem; align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.7); text-decoration: none;
+      font-size: .95rem; font-weight: 500; transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--green-400); }
     .nav-cta {
       background: var(--green-500);
       color: var(--white); border: none;
@@ -509,6 +515,9 @@
     .progress-meta .meta-lbl { font-size: .75rem; color: rgba(255,255,255,.45); }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 992px) {
+      .nav-links { display: none; }
+    }
     @media (max-width: 768px) {
       .about-grid, .community-grid { grid-template-columns: 1fr; }
       .about-img-wrap img, .community-img img { height: 300px; }
@@ -533,6 +542,12 @@
   <!-- NAV -->
   <nav>
     <a href="#home" class="nav-logo">BC<span>4</span>P</a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#pillars">Knowledge Pillars</a>
+      <a href="#donate">Investment Tiers</a>
+      <a href="#register">Register</a>
+    </div>
     <button class="nav-cta" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">🌿 Donate Now</button>
   </nav>
 
